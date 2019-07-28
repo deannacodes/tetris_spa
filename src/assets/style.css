@@ -1,0 +1,124 @@
+
+body {
+    background: #334768;
+    color: white !important;
+
+}
+
+.high-scores {
+    min-height: 235px;    
+    background: rgba(255,255,255,0.1);
+    padding: 20px 40px;
+    margin-bottom: 50px;
+}
+
+#gameOver {
+    color: black;
+}
+
+.game-container {
+    border: 2px solid white;
+    border-top: none;
+    min-height: 578px;
+    background: rgba(0,0,0,0.2);
+    width: 304px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.block {
+    height: 30px;
+    width: 30px;
+    border: 4px solid transparent;
+}
+
+.line {
+    border: 4px outset #4485BA;
+    background: #4485BA;
+}
+
+.square {
+    border: 4px outset #9872B2;
+    background: #9872B2;
+}
+
+.tblock {
+    border: 4px outset  #FFDF99;
+    background: #FFDF99;
+}
+
+.sblock {
+    border: 4px outset  #EF476F;
+    background:  #EF476F;
+}
+
+.zblock {
+    border: 4px outset #F69AB0;
+    background: #F69AB0;
+}
+
+.lblock {
+    border: 4px outset #8DECD3;
+    background: #8DECD3;
+}
+
+.jblock {
+    border: 4px outset #06C392;
+    background: #06C392;
+}
+
+.next-brick-bg {
+    background: rgba(255,255,255,0.1);
+    border-top: none;
+    padding: 30px;
+    width: 154px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 50px;
+}
+
+.next-brick-render {    
+    height: 120px;
+    display: flex;
+    flex-flow: wrap;
+    align-content: center;
+}
+
+.lineNext {
+    width: 30px
+}
+
+.squareNext {
+    width: 60px
+}
+
+.tblockNext {
+    width: 90px
+}
+
+.sblockNext {
+    width: 120px
+}
+
+.zblockNext {
+    width: 120px
+}
+
+.lblockNext {
+    width: 60px
+}
+
+.jblockNext {
+    width: 60px
+}
+
+.play-buttons {
+    padding-bottom: 30px;
+    padding-top: 50px;
+}
+
+.mobile-info {
+    display: none;
+}
+
