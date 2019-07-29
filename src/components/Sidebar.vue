@@ -13,13 +13,14 @@
           v-on:click="this.pauseToggle"
           class="btn btn-light"
           style="margin-left: 3px;"
+          :disabled="status == 'Game Over'"
         >{{ statusButton }}</button>
       </div>
     </div>
     <div class="up-next">
       <h3>Up Next:</h3>
       <div class="next-brick-bg">
-        <div class="next-brick-render" v-bind:class="{'lineNext': (upNext == 1),'squareNext': (upNext == 7),'tblockNext': (upNext == 2),'sblockNext': (upNext == 3),'zblockNext': (upNext == 4),'lblockNext': (upNext == 5),'jblockNext': (upNext == 6)}">
+        <div class="next-brick-render" v-bind:class="{'lineNext': (upNext == 1),'squareNext': (upNext == 0),'tblockNext': (upNext == 2),'sblockNext': (upNext == 3),'zblockNext': (upNext == 4),'lblockNext': (upNext == 5),'jblockNext': (upNext == 6)}">
           <div
             class="block"
             v-for="block in this.upNextBlocks"
@@ -54,8 +55,9 @@ export default {
     upNext: "upNext",
 
     statusButton() {
-      if (this.status == "Active") return "Pause Game";
-      else if (this.status == "Paused") return "Resume Game";
+      if (this.status == "Active") return "Pause Game"
+      else if (this.status == "Paused") return "Resume Game"
+      else if (this.status == "Game Over") return "Game Over"
       else {
         return "Start Game";
       }

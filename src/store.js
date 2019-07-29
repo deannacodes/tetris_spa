@@ -97,7 +97,6 @@ export const store = new Vuex.Store({
         },
         addScore(state, score) {
             state.scores.push(score)
-            console.log(state.scores)
         }
     }
 })
@@ -115,7 +114,6 @@ function getTypeVal(type) {
 
 
 function setInitialBlocks() {
-    console.log("gay")
     const b = []
     for (let i = 0; i < 200; i++) {
         b.push({ id: i, block: 0, value: 0 })

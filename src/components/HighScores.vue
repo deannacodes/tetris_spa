@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>High Scores</h3>
+    <h3>Your High Scores</h3>
     <ol class="high-scores">
       <li class="score" v-for="score in scores" v-bind:key="score.id">
         <span class="score-name">{{ score.name }}</span> -
