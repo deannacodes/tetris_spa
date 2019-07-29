@@ -199,23 +199,13 @@ export default {
     },
 
     popRow: function() {
-      //get the rows we need to check for completion
-      let rows = [];
-      for (let i = 0; i < 4; i++) {        
-        const row = Math.floor(this.activePos[i] / 10);
-        if (!rows.includes(row)) rows.push(row);
-      }
-      rows.sort()
 
-      //check if we're popping any of these rows
-      //if so, set the multiplier and score
       let multiplier = 0;
       let blocks = this.blocks
-      for (let j = 0; j < rows.length; j++) {
+      for (let j = 0; j < 20; j++) {
         let pop = true;
-        const row = rows[j]
         for (let i = 0; i < 10; i++) {
-          const check = row * 10 + i;
+          const check = j * 10 + i;
 
           if (blocks[check].value == 0) {
             pop = false;
