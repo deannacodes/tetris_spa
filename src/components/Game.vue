@@ -217,7 +217,7 @@ export default {
           this.$store.commit("incrementPopCount");
           multiplier++;
 
-          for (let i = (row + 1) * 10 - 1; i > 9; i--) {
+          for (let i = (j + 1) * 10 - 1; i > 9; i--) {
             blocks[i].block = blocks[i - 10].block;
             blocks[i].value = blocks[i - 10].value;
           }
