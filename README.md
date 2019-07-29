@@ -1,29 +1,6 @@
-# tetris_spa
+# Tetris as a SPA 
+This is a re-implementation of Tetris as a single page application. 
 
-## Project setup
-```
-npm install
-```
+It's hosted on Heroku, you can [play it here!](https://deannacodes-tetris.herokuapp.com/)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Built in Vue.js, state management with Vuex, css through Bootstrap-Vue. Backend with Express and Serve-Static. 
