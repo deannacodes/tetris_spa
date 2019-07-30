@@ -25,7 +25,7 @@ export default {
   }),
   watch: {
     status(newStatus, oldStatus) {
-      if (oldStatus == "Start" || newStats == "Active") {
+      if (oldStatus == "Start" || newStatus == "Active") {
         this.startGame();
       } 
     }
