@@ -1,7 +1,6 @@
-const db = require('./db/db')
-
 import Vuex from 'vuex'
 import Vue from 'vue'
+import Axios from 'axios';
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
@@ -17,25 +16,24 @@ export const store = new Vuex.Store({
         score: 0,
         status: "Start",
         upNext: null,
-        scores: getScores()
+        scores: []
     },
     mutations: {
         newGame(state) {
             clearInterval(state.interval)
-            state.blocks = [],
-                state.upNextBlocks = [],
-                state.interval = null,
-                state.activePos = null,
-                state.currentBlock = 1,
-                state.currentBlockType = null,
-                state.fallingSpeed = 1000,
-                state.level = 1,
-                state.popCount = 0,
-                state.score = 0,
-                state.status = "Start",
-                state.upNext = null
-                state.blocks = setInitialBlocks()
-                state.scores = getScores()
+            state.blocks = []
+            state.interval = null
+            state.activePos = null
+            state.currentBlock = 1
+            state.currentBlockType = null
+            state.fallingSpeed = 1000
+            state.level = 1
+            state.popCount = 0
+            state.score = 0
+            state.status = "Start"
+            state.upNext = null
+            state.blocks = setInitialBlocks()
+            state.scores = []
         },
         setBlocksValuesOnActivePos(state) {
             for (let i = 0; i < 4; i++) {
@@ -100,6 +98,27 @@ export const store = new Vuex.Store({
         },
         addScore(state, score) {
             state.scores.push(score)
+        },
+        setScores(state, scores) {
+            state.scores = scores
+        }
+    },
+    actions: {
+        getScores({ commit }) {
+            Axios.get("api/scores")
+                .then((response) => {
+                    const scoresResponse = response.data.response
+                    let scores = []
+                    for (let i = 0; i < scoresResponse.length; i++) {
+                        const score = {
+                            id: scoresResponse[i].id,
+                            name: scoresResponse[i].name,
+                            score: scoresResponse[i].score
+                        }
+                        scores.push(score)
+                    }
+                    commit('setScores', scores)
+                })
         }
     }
 })
@@ -122,9 +141,4 @@ function setInitialBlocks() {
         b.push({ id: i, block: 0, value: 0 })
     }
     return b
-}
-
-
-function getScores() {
-    return db.getScores()
 }

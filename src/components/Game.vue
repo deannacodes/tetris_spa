@@ -4,7 +4,14 @@
       class="block"
       v-for="block in blocks"
       v-bind:key="block.id"
-      v-bind:class="{'active': (block.value > 0),'line': (block.value == 1),'square': (block.value == 7),'tblock': (block.value == 2),'sblock': (block.value == 3),'zblock': (block.value == 4),'lblock': (block.value == 5),'jblock': (block.value == 6)}"
+      v-bind:class="{'active': (block.value > 0),
+      'line': (block.value == 1),
+      'square': (block.value == 7),
+      'tblock': (block.value == 2),
+      'sblock': (block.value == 3),
+      'zblock': (block.value == 4),
+      'lblock': (block.value == 5),
+      'jblock': (block.value == 6)}"
     ></div>
   </div>
 </template>

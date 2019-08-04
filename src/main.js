@@ -12,6 +12,9 @@ Vue.use(Vuex)
 new Vue({
   el: '#app',
   store,
+  created() {
+    this.$store.dispatch('getScores') // dispatch loading
+  },
   render: h => h(App)
 })
  
