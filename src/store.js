@@ -1,3 +1,5 @@
+const db = require('./db/db')
+
 import Vuex from 'vuex'
 import Vue from 'vue'
 Vue.use(Vuex)
@@ -15,7 +17,7 @@ export const store = new Vuex.Store({
         score: 0,
         status: "Start",
         upNext: null,
-        scores: []
+        scores: getScores()
     },
     mutations: {
         newGame(state) {
@@ -33,6 +35,7 @@ export const store = new Vuex.Store({
                 state.status = "Start",
                 state.upNext = null
                 state.blocks = setInitialBlocks()
+                state.scores = getScores()
         },
         setBlocksValuesOnActivePos(state) {
             for (let i = 0; i < 4; i++) {
@@ -119,4 +122,9 @@ function setInitialBlocks() {
         b.push({ id: i, block: 0, value: 0 })
     }
     return b
+}
+
+
+function getScores() {
+    return db.getScores()
 }
