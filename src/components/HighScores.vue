@@ -19,7 +19,7 @@
             aria-describedby="name"
             placeholder="Enter name"
             v-model="name"
-            maxlength="99"
+            maxlength="10"
           />
         </div>
       </form>
