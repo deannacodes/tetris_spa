@@ -559,7 +559,8 @@ export default {
 
   mounted() {
     window.addEventListener("keydown", e => {
-      var key = e.which || e.keyCode;
+      var key = e.which || e.keyCode;      
+      e.preventDefault();
       if (key === 37) {
         this.left();
       } else if (key == 39) {

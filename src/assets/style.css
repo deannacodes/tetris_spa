@@ -4,6 +4,9 @@ body {
     color: white !important;
 
 }
+.container {
+    padding: 20px;
+}
 
 .high-scores {
     min-height: 235px;    

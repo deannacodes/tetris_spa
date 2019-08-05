@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="container" style="padding-top:30px;">
+    <div class="container">
       <h1 class="text-center">T E T R I S</h1>
 
       <div id="game-box" class="row align-items-center justify-content-center">
@@ -14,14 +14,15 @@
                 <li>Space or D: Rotate Right</li>
               </ul>
           </div>
+          <p class="footnote">This is just a personal project. I do not own, nor am I affiliated with Tetris.</p>
         </div>
 
         <div
           class="col-md-4 align-items-center justify-content-center text-center"
-          style="padding:50px 0;"
+          style="padding-top:20px;"
         >
           <game></game>
-          <p class="footnote">This is just a personal project. I do not own, nor am I affiliated with Tetris.</p>
+          
         </div>
 
         <div class="col-md-4 align-self-start text-center">
