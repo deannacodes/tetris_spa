@@ -73,10 +73,8 @@ export default {
       this.$store.commit("newGame");
     },
     pauseToggle() {
-      if (this.status == "Active") this.$store.commit("setStatus", "Paused");
-      else {
-        this.$store.commit("setStatus", "Active");
-      }
+      if (this.status == "Active") this.$store.commit("setStatus", "Paused")
+      else this.$store.commit("setStatus", "Active")
     },
     renderNextBrick: function() {
       let nextBlocks = [];

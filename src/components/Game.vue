@@ -32,13 +32,15 @@ export default {
   }),
   watch: {
     status(newStatus, oldStatus) {
-      if (oldStatus == "Start" || newStatus == "Active") {
+      if (oldStatus == "Start" && newStatus == "Active") {
+        console.log(oldStatus, newStatus);
         this.startGame();
-      } 
+      }
     }
   },
   methods: {
     startGame: function() {
+      console.log("startGame");
       this.nextBrick();
     },
 
@@ -85,7 +87,7 @@ export default {
 
       if (!this.canMove("d")) {
         this.$store.commit("clearStateInterval");
-        this.$store.commit("setStatus", "Game Over")
+        this.$store.commit("setStatus", "Game Over");
         return;
       }
 
@@ -206,9 +208,8 @@ export default {
     },
 
     popRow: function() {
-
       let multiplier = 0;
-      let blocks = this.blocks
+      let blocks = this.blocks;
       for (let j = 0; j < 20; j++) {
         let pop = true;
         for (let i = 0; i < 10; i++) {
