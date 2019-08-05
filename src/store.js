@@ -90,7 +90,7 @@ export const store = new Vuex.Store({
         levelUp(state) {
             const oldLevel = state.level
             state.level = 1 + Math.floor(state.popCount / 10)
-            if ((oldLevel < state.level) && (state.fallingSpeed >= 150)) state.fallingSpeed -= 100
+            if ((oldLevel < state.level) && (state.fallingSpeed >= 150)) state.fallingSpeed -= 150
         },
         setUpNext(state, next) {
             state.upNext = next

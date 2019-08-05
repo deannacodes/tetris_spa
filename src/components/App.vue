@@ -21,6 +21,7 @@
           style="padding:50px 0;"
         >
           <game></game>
+          <p class="footnote">This is just a personal project. I do not own, nor am I affiliated with Tetris.</p>
         </div>
 
         <div class="col-md-4 align-self-start text-center">

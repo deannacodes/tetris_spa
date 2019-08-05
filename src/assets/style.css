@@ -123,3 +123,9 @@ body {
     display: none;
 }
 
+.footnote {
+    padding-top: 15px;
+    font-size: 12px;
+    font-style: italic;
+}
+
