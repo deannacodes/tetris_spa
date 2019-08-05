@@ -2,7 +2,7 @@
   <div>
     <h3>High Scores</h3>
     <ol class="high-scores">
-      <li class="score" v-for="score in scores" v-bind:key="score.id">
+      <li class="score" v-for="score in topScores" v-bind:key="score.id">
         <span class="score-name">{{ score.name }}</span> -
         <span class="score-score">{{ score.score }}</span>
       </li>
