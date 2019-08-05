@@ -559,17 +559,19 @@ export default {
 
   mounted() {
     window.addEventListener("keydown", e => {
-      var key = e.which || e.keyCode;      
-      e.preventDefault();
+      var key = e.which || e.keyCode;   
+      if (key == 38 || key == 40)  {
+        e.preventDefault();
+      }
       if (key === 37) {
         this.left();
       } else if (key == 39) {
         this.right();
       } else if (key == 40) {
         this.down();
-      } else if (key == 16 || key == 65 || key == 38) {
+      } else if (key == 16 || key == 65 || key == 38 || key == 88) {
         this.rotatel();
-      } else if (key == 32 || key == 68) {
+      } else if (key == 32 || key == 68 || key == 67) {
         this.rotater();
       }
     });
