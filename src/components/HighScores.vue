@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Your High Scores</h3>
+    <h3>High Scores</h3>
     <ol class="high-scores">
       <li class="score" v-for="score in scores" v-bind:key="score.id">
         <span class="score-name">{{ score.name }}</span> -
@@ -11,7 +11,7 @@
     <b-modal id="gameOver" title="Game Over" @ok="addScore">
       <form>
         <div class="form-group">
-          <label for="exampleInputEmail1">Enter your name to save your score.</label>
+          <label for="name">Enter your name to save your score.</label>
           <input
             type="text"
             class="form-control"
@@ -19,6 +19,7 @@
             aria-describedby="name"
             placeholder="Enter name"
             v-model="name"
+            maxlength="99"
           />
         </div>
       </form>
@@ -63,11 +64,10 @@ export default {
   methods: {
     addScore: function() {
       const score = {
-        id: this.scores.length,
         name: this.name,
         score: this.score
       };
-      this.$store.commit("addScore", score);
+      this.$store.dispatch("addScore", score);
     }
   }
 };

@@ -33,7 +33,6 @@ export const store = new Vuex.Store({
             state.status = "Start"
             state.upNext = null
             state.blocks = setInitialBlocks()
-            state.scores = []
         },
         setBlocksValuesOnActivePos(state) {
             for (let i = 0; i < 4; i++) {
@@ -119,9 +118,16 @@ export const store = new Vuex.Store({
                     }
                     commit('setScores', scores)
                 })
+        },
+        addScore({ commit }, score) {
+            const url = "api/scores?name=" + score.name + "&score=" + score.score 
+            Axios.post(url).then((response) => {
+                this.dispatch('getScores')
+            })
         }
     }
 })
+
 
 function getTypeVal(type) {
     const currentBlockType = type;

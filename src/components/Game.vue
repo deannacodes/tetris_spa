@@ -242,14 +242,13 @@ export default {
       this.$store.commit("setScore", multiplier);
     },
 
-    getTypeVal: function(type) {
-      const currentBlockType = this.currentBlockType;
-      if (currentBlockType === "line") return 1;
-      else if (currentBlockType === "t") return 2;
-      else if (currentBlockType === "s") return 3;
-      else if (currentBlockType === "z") return 4;
-      else if (currentBlockType === "l") return 5;
-      else if (currentBlockType === "j") return 6;
+    getTypeVal: function(type = this.currentBlockType) {
+      if (type === "line") return 1;
+      else if (type === "t") return 2;
+      else if (type === "s") return 3;
+      else if (type === "z") return 4;
+      else if (type === "l") return 5;
+      else if (type === "j") return 6;
       else return 7;
     },
 
