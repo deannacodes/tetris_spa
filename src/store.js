@@ -88,9 +88,9 @@ export const store = new Vuex.Store({
             state.score += (add * state.level)
         },
         levelUp(state) {
+            const oldLevel = state.level
             state.level = 1 + Math.floor(state.popCount / 10)
-            if (state.fallingSpeed >= 150)
-                state.fallingSpeed -= 150
+            if ((oldLevel < state.level) && (state.fallingSpeed >= 150)) state.fallingSpeed -= 100
         },
         setUpNext(state, next) {
             state.upNext = next

@@ -10,7 +10,7 @@ app.use('/', serveStatic(path.join(__dirname, '/dist')))
 const port = process.env.PORT || 8080
 app.listen(port)
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
@@ -25,17 +25,32 @@ console.log("[+] server started...")
 const mysql = require('mysql');
 const config = require('./db/config')
 
-var con = mysql.createConnection({
-    host: config.host,
-    user: config.user,
-    password: config.password,
-    database: config.database
-});
+var con;
 
-con.connect(function (err) {
-    if (err) throw err
-    console.log("[+] Connected to database")
-});
+function handleDisconnect() {
+    con = mysql.createConnection({
+        host: config.host,
+        user: config.user,
+        password: config.password,
+        database: config.database
+    })
+
+    con.connect(function (err) {
+        if (err) throw err
+        console.log("[+] Connected to database")
+    });
+
+    con.on('error', function (err) {
+        console.log('[+] Database Error: ', err);
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+            handleDisconnect();
+        } else {
+            throw err;
+        }
+    });
+}
+
+handleDisconnect()
 
 app.post('/api/scores', (req, res) => {
     const sql = `INSERT INTO highscores (name, score) VALUES ('${req.query.name}', ${req.query.score})`

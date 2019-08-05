@@ -33,14 +33,12 @@ export default {
   watch: {
     status(newStatus, oldStatus) {
       if (oldStatus == "Start" && newStatus == "Active") {
-        console.log(oldStatus, newStatus);
         this.startGame();
       }
     }
   },
   methods: {
     startGame: function() {
-      console.log("startGame");
       this.nextBrick();
     },
 
@@ -76,8 +74,6 @@ export default {
       next = Math.floor(Math.random() * 7);
       this.$store.commit("setUpNext", next);
       if (next == 0) next = 7;
-
-      //this.renderNextBrick()
     },
 
     fallingBlocks: function(pos, type) {
@@ -91,20 +87,20 @@ export default {
         return;
       }
 
-      const self = this;
       if (this.interval == null) {
+        const self = this;
         const newInterval = setInterval(function() {
           if (self.status != "Paused") {
             if (self.canMove("d")) {
               self.moveBlock("d");
             } else {
-              clearInterval(this.interval);
-              this.interval = null;
+              clearInterval(self.interval);
+              self.$store.commit("setStateInterval", null);
               self.popRow();
               self.nextBrick();
             }
           }
-        }, this.fallingSpeed);
+        }, self.fallingSpeed);
         this.$store.commit("setStateInterval", newInterval);
       }
     },
@@ -582,3 +578,6 @@ export default {
 
 <style>
 </style>
+
+
+
