@@ -48,8 +48,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      upNextBlocks: [{}],
-      soundFile: null
+      upNextBlocks: [{}]
     };
   },
   computed: mapState({
@@ -70,16 +69,9 @@ export default {
     },
 
     soundButton() {
-      if (this.soundFile == null) {
-        var sounds = require.context("../assets/", false, /\.ogg$/);
-        this.soundFile = new Audio(sounds("./theme.ogg"));
-      }
-
       if (this.sound) {
-        this.soundFile.play();
         return "fa fa-volume-up";
       } else {
-        this.soundFile.pause();
         return "fa fa-volume-mute";
       }
     }
