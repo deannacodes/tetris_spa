@@ -14,7 +14,9 @@
                 <li>Space or D: Rotate Right</li>
               </ul>
           </div>
-          <p class="footnote">This is just a personal project. I do not own, nor am I affiliated with Tetris.</p>
+          <p class="footnote">This is just a personal project. I do not own, nor am I affiliated with Tetris. Music provided under the Creative Commons 
+            <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en" target="_blank">Attribution-Share Alike 3.0 Unported</a> license.
+          </p>
         </div>
 
         <div

@@ -1,26 +1,30 @@
 <template>
   <div>
-    <div class="play-buttons">
-      <div class="play-buttons">
-        <button
-          id="new-game"
-          v-on:click="this.newGame"
-          class="btn btn-success"
-          style="margin-right: 3px;"
-        >New Game</button>
-        <button
-          id="pause"
-          v-on:click="this.pauseToggle"
-          class="btn btn-light"
-          style="margin-left: 3px;"
-          :disabled="status == 'Game Over'"
-        >{{ statusButton }}</button>
+    <div class="options-buttons">
+      <button
+        id="new-game"
+        v-on:click="this.newGame"
+        class="btn btn-success"
+        style="margin-right: 3px;"
+      >New Game</button>
+      <button
+        id="pause"
+        v-on:click="this.pauseToggle"
+        class="btn btn-light"
+        style="margin: 0 3px;"
+        :disabled="status == 'Game Over'"
+      >{{ statusButton }}</button>
+      <div class="sound-button">
+        <i v-on:click="this.soundToggle" :class="soundButton"></i>
       </div>
     </div>
     <div class="up-next">
       <h3>Up Next:</h3>
       <div class="next-brick-bg">
-        <div class="next-brick-render" v-bind:class="{'lineNext': (upNext == 1),'squareNext': (upNext == 0),'tblockNext': (upNext == 2),'sblockNext': (upNext == 3),'zblockNext': (upNext == 4),'lblockNext': (upNext == 5),'jblockNext': (upNext == 6)}">
+        <div
+          class="next-brick-render"
+          v-bind:class="{'lineNext': (upNext == 1),'squareNext': (upNext == 0),'tblockNext': (upNext == 2),'sblockNext': (upNext == 3),'zblockNext': (upNext == 4),'lblockNext': (upNext == 5),'jblockNext': (upNext == 6)}"
+        >
           <div
             class="block"
             v-for="block in this.upNextBlocks"
@@ -44,7 +48,8 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      upNextBlocks: [{}]
+      upNextBlocks: [{}],
+      soundFile: null
     };
   },
   computed: mapState({
@@ -53,13 +58,29 @@ export default {
     popCount: "popCount",
     score: "score",
     upNext: "upNext",
+    sound: "sound",
 
     statusButton() {
-      if (this.status == "Active") return "Pause Game"
-      else if (this.status == "Paused") return "Resume Game"
-      else if (this.status == "Game Over") return "Game Over"
+      if (this.status == "Active") return "Pause Game";
+      else if (this.status == "Paused") return "Resume Game";
+      else if (this.status == "Game Over") return "Game Over";
       else {
         return "Start Game";
+      }
+    },
+
+    soundButton() {
+      if (this.soundFile == null) {
+        var sounds = require.context("../assets/", false, /\.ogg$/);
+        this.soundFile = new Audio(sounds("./theme.ogg"));
+      }
+
+      if (this.sound) {
+        this.soundFile.play();
+        return "fa fa-volume-up";
+      } else {
+        this.soundFile.pause();
+        return "fa fa-volume-mute";
       }
     }
   }),
@@ -73,8 +94,11 @@ export default {
       this.$store.commit("newGame");
     },
     pauseToggle() {
-      if (this.status == "Active") this.$store.commit("setStatus", "Paused")
-      else this.$store.commit("setStatus", "Active")
+      if (this.status == "Active") this.$store.commit("setStatus", "Paused");
+      else this.$store.commit("setStatus", "Active");
+    },
+    soundToggle() {
+      this.$store.commit("toggleSound");
     },
     renderNextBrick: function() {
       let nextBlocks = [];

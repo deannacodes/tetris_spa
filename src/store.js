@@ -16,7 +16,8 @@ export const store = new Vuex.Store({
         score: 0,
         status: "Start",
         upNext: null,
-        scores: []
+        scores: [],
+        sound: false
     },
     mutations: {
         newGame(state) {
@@ -100,6 +101,9 @@ export const store = new Vuex.Store({
         },
         setScores(state, scores) {
             state.scores = scores
+        },
+        toggleSound(state) {
+            state.sound = !state.sound
         }
     },
     actions: {

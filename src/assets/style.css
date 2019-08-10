@@ -117,9 +117,18 @@ body {
     width: 60px
 }
 
-.play-buttons {
+.options-buttons {
     padding-bottom: 30px;
     padding-top: 50px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.sound-button {
+    font-size: 21px;
+    padding: 2px 0 0 6px;
+    display: inline-block;
 }
 
 .mobile-info {
@@ -128,7 +137,8 @@ body {
 
 .footnote {
     padding-top: 15px;
-    font-size: 12px;
+    font-size: 11px;
     font-style: italic;
+    color: rgba(255,255,255,0.5)
 }
 
